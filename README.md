@@ -1,12 +1,20 @@
+Haan, ye conflict file ka content mix ho gaya hai. **Isko manually clean karne ki zaroorat nahi**—sabse safe way hai README ko poora replace karna.
+
+### 1. `README.md` mein ALL content delete karo
+
+Phir **sirf ye clean version** paste karo:
+
+````md
 # 📚 Book Manager — Week 5
 
-A full-stack Book Manager application built with React, Context API, Tailwind CSS, Node.js, Express, MongoDB, and automated testing.
+A full-stack Book Manager application built with **React, Context API, Tailwind CSS, Node.js, Express, MongoDB, and automated testing**.
 
 This Week 5 version focuses on **testing across the stack**, including frontend unit/component tests, backend API tests, and end-to-end testing.
 
 ## ✨ Features
 
 ### 🔐 Authentication
+
 - User registration
 - User login
 - JWT authentication
@@ -14,6 +22,7 @@ This Week 5 version focuses on **testing across the stack**, including frontend 
 - Logout functionality
 
 ### 📚 Book Management
+
 - Create books
 - View books
 - Update books
@@ -25,6 +34,7 @@ This Week 5 version focuses on **testing across the stack**, including frontend 
 - Loading and error states
 
 ### 🧪 Testing
+
 - Frontend component tests using Vitest and React Testing Library
 - User interaction tests
 - Form validation tests
@@ -101,146 +111,210 @@ e2e/
 └── book-manager.spec.js
 
 playwright.config.js
-🚀 Installation
+````
+
+---
+
+## 🚀 Installation
 
 Clone the repository:
 
+```bash
 git clone https://github.com/Abdulkhaliqdev2007/book-manager-frontend-week5.git
+```
 
 Navigate to the project folder:
 
+```bash
 cd book-manager-frontend-week5
+```
 
 Install dependencies:
 
+```bash
 npm install
-🔧 Environment Variables
+```
 
-Create a .env file in the frontend root directory if required:
+---
 
+## 🔧 Environment Variables
+
+Create a `.env` file in the frontend root directory if required:
+
+```env
 VITE_API_URL=http://localhost:5000/api
+```
 
-Do not commit .env files to GitHub.
+> Do not commit `.env` files to GitHub.
 
-▶️ Run the Application
+---
+
+## ▶️ Run the Application
 
 Start the frontend development server:
 
+```bash
 npm run dev
+```
 
 The frontend normally runs at:
 
+```text
 http://localhost:5173
+```
 
 Make sure the backend server is also running.
 
-🧪 Testing
+---
+
+# 🧪 Testing
 
 This project includes automated tests across the frontend and backend.
 
-Frontend Unit & Component Tests
+## Frontend Unit & Component Tests
 
 Frontend tests are written using:
 
-Vitest
-React Testing Library
+* Vitest
+* React Testing Library
 
 Run all frontend tests:
 
+```bash
 npm run test:run
+```
 
 Run tests in watch mode:
 
+```bash
 npm test
+```
 
 The frontend currently includes tests for:
 
-BookCard component rendering and interactions
-BookForm form submission
-Login page rendering
-Login form validation
-Invalid email validation
-Password visibility toggle
-Successful login and navigation
-Frontend Test Result
+* BookCard component rendering and interactions
+* BookForm form submission
+* Login page rendering
+* Login form validation
+* Invalid email validation
+* Password visibility toggle
+* Successful login and navigation
+
+### Frontend Test Result
+
+```text
 Test Files: 3 passed
 Tests:      10 passed
-🔄 End-to-End Testing
+```
 
-End-to-end tests are written using Playwright.
+---
+
+## 🔄 End-to-End Testing
+
+End-to-end tests are written using **Playwright**.
 
 Run E2E tests:
 
+```bash
 npx playwright test
+```
 
 Run E2E tests with the browser visible:
 
+```bash
 npx playwright test --headed
+```
 
 The E2E tests simulate real user interactions with the application.
 
-🖥️ Backend Testing
+---
+
+## 🖥️ Backend Testing
 
 The backend uses:
 
-Jest
-Supertest
+* Jest
+* Supertest
 
 Backend tests cover core API endpoints, including authentication and book operations.
 
 Navigate to the backend:
 
+```bash
 cd ../backend
+```
 
 Install dependencies:
 
+```bash
 npm install
+```
 
 Run backend tests:
 
+```bash
 npm run test
+```
 
-Current backend test result:
+### Backend Test Result
 
+```text
 Test Suites: 3 passed
 Tests:       12 passed
+```
 
-Backend repository:
+### Backend Repository
 
-https://github.com/Abdulkhaliqdev2007/book-manager-backend-week5.git
+[https://github.com/Abdulkhaliqdev2007/book-manager-backend-week5.git](https://github.com/Abdulkhaliqdev2007/book-manager-backend-week5.git)
 
-📊 Testing Summary
-Test Area	Tool	Tests
-Frontend Components	Vitest + React Testing Library	10
-Backend API	Jest + Supertest	12
-End-to-End	Playwright	Included
-Total Frontend Tests		10
-Total Backend Tests		12
-🔗 Repositories
-Frontend
+---
 
-https://github.com/Abdulkhaliqdev2007/book-manager-frontend-week5
+## 📊 Testing Summary
 
-Backend
+| Test Area                | Tool                           |    Tests |
+| ------------------------ | ------------------------------ | -------: |
+| Frontend Components      | Vitest + React Testing Library |       10 |
+| Backend API              | Jest + Supertest               |       12 |
+| End-to-End               | Playwright                     | Included |
+| **Total Frontend Tests** |                                |   **10** |
+| **Total Backend Tests**  |                                |   **12** |
 
-https://github.com/Abdulkhaliqdev2007/book-manager-backend-week5
+---
 
-🎯 Week 5 Learning Goals
+## 🔗 Repositories
+
+### Frontend
+
+[https://github.com/Abdulkhaliqdev2007/book-manager-frontend-week5](https://github.com/Abdulkhaliqdev2007/book-manager-frontend-week5)
+
+### Backend
+
+[https://github.com/Abdulkhaliqdev2007/book-manager-backend-week5](https://github.com/Abdulkhaliqdev2007/book-manager-backend-week5)
+
+---
+
+## 🎯 Week 5 Learning Goals
 
 This project demonstrates:
 
-Automated frontend testing
-React component testing
-User interaction testing
-Form validation testing
-Backend API testing
-Happy-path API testing
-Failure-case API testing
-End-to-end testing
-Test-driven debugging
-Automated quality checks
-Full-stack testing workflow
-👨‍💻 Author
-Hafiz Abdul Khaliq
+* Automated frontend testing
+* React component testing
+* User interaction testing
+* Form validation testing
+* Backend API testing
+* Happy-path API testing
+* Failure-case API testing
+* End-to-end testing
+* Test-driven debugging
+* Automated quality checks
+* Full-stack testing workflow
+
+---
+
+## 👨‍💻 Author
+
+**Hafiz Abdul Khaliq**
+
 GitHub:
-https://github.com/Abdulkhaliqdev2007
+
+[https://github.com/Abdulkhaliqdev2007](https://github.com/Abdulkhaliqdev2007)
