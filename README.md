@@ -1,78 +1,66 @@
-# 📚 Book Manager — Week 3
+# 📚 Book Manager — Week 5
 
-A full-stack Book Manager application built with React, Context API, Tailwind CSS, Node.js, Express, and MongoDB.
+A full-stack Book Manager application built with React, Context API, Tailwind CSS, Node.js, Express, MongoDB, and automated testing.
 
-This Week 3 version focuses on **global state management, shared state, data-fetching patterns, and UI polish**.
+This Week 5 version focuses on **testing across the stack**, including frontend unit/component tests, backend API tests, and end-to-end testing.
 
 ## ✨ Features
 
 ### 🔐 Authentication
-
-* User signup and login
-* JWT-based authentication
-* Protected routes
-* User-specific book management
+- User registration
+- User login
+- JWT authentication
+- Protected routes
+- Logout functionality
 
 ### 📚 Book Management
+- Create books
+- View books
+- Update books
+- Delete books
+- Search books
+- Sort books
+- Book cover image upload
+- Form validation
+- Loading and error states
 
-* View books
-* Add new books
-* Update existing books
-* Delete books
-* Search books by title or author
-* Sort books by title and published year
+### 🧪 Testing
+- Frontend component tests using Vitest and React Testing Library
+- User interaction tests
+- Form validation tests
+- Backend API tests using Jest and Supertest
+- End-to-end tests using Playwright
 
-### 🌐 Global State Management
-
-Implemented **React Context API** to manage shared application state.
-
-The `BookContext` handles:
-
-* Books data
-* Fetching books
-* Adding books
-* Updating books
-* Deleting books
-* Loading states
-* Error states
-* Delete state
-* Success messages
-* Search state
-* Sort state
-
-The previous `useBooks.js` hook was removed after migrating book-related shared state to Context API.
-
-### 🎨 UI Polish
-
-* Loading spinner during data fetching
-* Empty state when no books are available
-* Reusable error alerts
-* Success messages after CRUD operations
-* Loading feedback during CRUD actions
-* Responsive interface
-* Clean component-based architecture
+---
 
 ## 🛠️ Tech Stack
 
 ### Frontend
 
-* React
-* Vite
-* React Context API
-* React Router DOM
-* Tailwind CSS
-* Axios
-* Lucide React
-* JavaScript (ES6+)
+- React
+- Vite
+- React Router DOM
+- React Context API
+- Tailwind CSS
+- Axios
+- Lucide React
+- Vitest
+- React Testing Library
+- Playwright
+- JavaScript (ES6+)
 
 ### Backend
 
-* Node.js
-* Express.js
-* MongoDB
-* Mongoose
-* JWT
-* Multer
+- Node.js
+- Express.js
+- MongoDB
+- Mongoose
+- JWT
+- Multer
+- Jest
+- Supertest
+
+---
 
 ## 📁 Project Structure
 
@@ -85,10 +73,12 @@ src/
 │   ├── EmptyState.jsx
 │   ├── ErrorAlert.jsx
 │   ├── LoadingSpinner.jsx
-│   └── Navbar.jsx
+│   ├── Navbar.jsx
+│   ├── BookCard.test.jsx
+│   └── BookForm.test.jsx
 │
 ├── context/
-│   └── BookContext.js
+│   └── BookContext.jsx
 │
 ├── hooks/
 │   └── useAuth.js
@@ -96,86 +86,161 @@ src/
 ├── pages/
 │   ├── Login.jsx
 │   ├── Signup.jsx
-│   └── BookManager.jsx
+│   ├── BookManager.jsx
+│   └── Login.test.jsx
 │
 ├── services/
 │   ├── api.js
 │   ├── authService.js
 │   └── bookService.js
 │
-└── App.jsx
-```
+└── test/
+    └── setup.js
 
-## 🚀 Installation
+e2e/
+└── book-manager.spec.js
+
+playwright.config.js
+🚀 Installation
 
 Clone the repository:
 
-```bash
-git clone https://github.com/Abdulkhaliqdev2007/book-manager-week3-frontend.git
-```
+git clone https://github.com/Abdulkhaliqdev2007/book-manager-frontend-week5.git
 
 Navigate to the project folder:
 
-```bash
-cd book-manager-week3-frontend
-```
+cd book-manager-frontend-week5
 
 Install dependencies:
 
-```bash
 npm install
-```
+🔧 Environment Variables
 
-## 🔐 Environment Variables
+Create a .env file in the frontend root directory if required:
 
-Create a `.env` file in the project root:
-
-```env
 VITE_API_URL=http://localhost:5000/api
-```
 
-For deployment, replace the value with your deployed backend API URL.
+Do not commit .env files to GitHub.
 
-**Do not commit sensitive credentials or secret keys to GitHub.**
+▶️ Run the Application
 
-## ▶️ Run the Application
+Start the frontend development server:
 
-Start the development server:
-
-```bash
 npm run dev
-```
 
-The frontend will normally run at:
+The frontend normally runs at:
 
-```text
 http://localhost:5173
-```
 
 Make sure the backend server is also running.
 
-## 🔗 Backend Repository
+🧪 Testing
 
-Backend API repository:
+This project includes automated tests across the frontend and backend.
 
-https://github.com/Abdulkhaliqdev2007/book-manager-backend.git
+Frontend Unit & Component Tests
 
-## 🎯 Week 3 Learning Goals
+Frontend tests are written using:
+
+Vitest
+React Testing Library
+
+Run all frontend tests:
+
+npm run test:run
+
+Run tests in watch mode:
+
+npm test
+
+The frontend currently includes tests for:
+
+BookCard component rendering and interactions
+BookForm form submission
+Login page rendering
+Login form validation
+Invalid email validation
+Password visibility toggle
+Successful login and navigation
+Frontend Test Result
+Test Files: 3 passed
+Tests:      10 passed
+🔄 End-to-End Testing
+
+End-to-end tests are written using Playwright.
+
+Run E2E tests:
+
+npx playwright test
+
+Run E2E tests with the browser visible:
+
+npx playwright test --headed
+
+The E2E tests simulate real user interactions with the application.
+
+🖥️ Backend Testing
+
+The backend uses:
+
+Jest
+Supertest
+
+Backend tests cover core API endpoints, including authentication and book operations.
+
+Navigate to the backend:
+
+cd ../backend
+
+Install dependencies:
+
+npm install
+
+Run backend tests:
+
+npm run test
+
+Current backend test result:
+
+Test Suites: 3 passed
+Tests:       12 passed
+
+Backend repository:
+
+https://github.com/Abdulkhaliqdev2007/book-manager-backend-week5.git
+
+📊 Testing Summary
+Test Area	Tool	Tests
+Frontend Components	Vitest + React Testing Library	10
+Backend API	Jest + Supertest	12
+End-to-End	Playwright	Included
+Total Frontend Tests		10
+Total Backend Tests		12
+🔗 Repositories
+Frontend
+
+https://github.com/Abdulkhaliqdev2007/book-manager-frontend-week5
+
+Backend
+
+https://github.com/Abdulkhaliqdev2007/book-manager-backend-week5
+
+🎯 Week 5 Learning Goals
 
 This project demonstrates:
 
-* Global state management using React Context API
-* Shared state between components
-* Reduced prop drilling
-* Centralized data-fetching logic
-* Loading and error handling
-* Empty-state UI
-* Search and sort using shared state
-* Improved user feedback
-* Cleaner component communication
-
-## 👨‍💻 Author
-
-**Hafiz Abdul Khaliq**
-
-GitHub: https://github.com/Abdulkhaliqdev2007
+Automated frontend testing
+React component testing
+User interaction testing
+Form validation testing
+Backend API testing
+Happy-path API testing
+Failure-case API testing
+End-to-end testing
+Test-driven debugging
+Automated quality checks
+Full-stack testing workflow
+👨‍💻 Author
+Hafiz Abdul Khaliq
+GitHub:
+https://github.com/Abdulkhaliqdev2007
