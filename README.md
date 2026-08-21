@@ -104,7 +104,7 @@ e2e/
 └── book-manager.spec.js
 
 playwright.config.js
-````
+```
 
 ---
 
