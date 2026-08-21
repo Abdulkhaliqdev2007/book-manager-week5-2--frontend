@@ -24,7 +24,7 @@ const Login = () => {
     if (!formData.email.trim()) {
       newErrors.email = 'Email is required';
     } 
-    else if (!/\S+\.\S+/.test(formData.email)) {
+   else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
       newErrors.email = 'Invalid email';
     }
 
@@ -109,26 +109,30 @@ const Login = () => {
 
 
             <div>
-              <label className="block text-sm font-semibold text-slate-700 mb-1.5">
-                Email
-              </label>
+              <label
+  htmlFor="email"
+  className="block text-sm font-semibold text-slate-700 mb-1.5"
+>
+  Email
+</label>
 
               <div className="relative">
 
                 <Mail className="absolute left-3 top-2.5 w-5 h-5 text-slate-400" />
 
                 <input
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  placeholder="you@example.com"
-                  className={`w-full pl-10 pr-4 py-2.5 rounded-lg border ${
-                    errors.email 
-                    ? 'border-red-400 focus:ring-red-200' 
-                    : 'border-slate-300 focus:ring-indigo-200 focus:border-indigo-500'
-                  } outline-none focus:ring-2 transition-all text-slate-800 placeholder-slate-400`}
-                />
+  id="email"
+  type="email"
+  name="email"
+  value={formData.email}
+  onChange={handleChange}
+  placeholder="you@example.com"
+  className={`w-full pl-10 pr-4 py-2.5 rounded-lg border ${
+    errors.email 
+    ? 'border-red-400 focus:ring-red-200' 
+    : 'border-slate-300 focus:ring-indigo-200 focus:border-indigo-500'
+  } outline-none focus:ring-2 transition-all text-slate-800 placeholder-slate-400`}
+/>
 
               </div>
 
@@ -144,28 +148,31 @@ const Login = () => {
 
             <div>
 
-              <label className="block text-sm font-semibold text-slate-700 mb-1.5">
-                Password
-              </label>
-
+             <label
+  htmlFor="password"
+  className="block text-sm font-semibold text-slate-700 mb-1.5"
+>
+  Password
+</label>
 
               <div className="relative">
 
                 <Lock className="absolute left-3 top-2.5 w-5 h-5 text-slate-400" />
 
 
-                <input
-                  type={showPassword ? "text" : "password"}
-                  name="password"
-                  value={formData.password}
-                  onChange={handleChange}
-                  placeholder="••••••"
-                  className={`w-full pl-10 pr-20 py-2.5 rounded-lg border ${
-                    errors.password 
-                    ? 'border-red-400 focus:ring-red-200' 
-                    : 'border-slate-300 focus:ring-indigo-200 focus:border-indigo-500'
-                  } outline-none focus:ring-2 transition-all text-slate-800 placeholder-slate-400`}
-                />
+               <input
+  id="password"
+  type={showPassword ? "text" : "password"}
+  name="password"
+  value={formData.password}
+  onChange={handleChange}
+  placeholder="••••••"
+  className={`w-full pl-10 pr-20 py-2.5 rounded-lg border ${
+    errors.password 
+    ? 'border-red-400 focus:ring-red-200' 
+    : 'border-slate-300 focus:ring-indigo-200 focus:border-indigo-500'
+  } outline-none focus:ring-2 transition-all text-slate-800 placeholder-slate-400`}
+/>
 
 
                 <button
