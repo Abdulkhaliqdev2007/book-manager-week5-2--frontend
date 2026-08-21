@@ -1,10 +1,3 @@
-Haan, ye conflict file ka content mix ho gaya hai. **Isko manually clean karne ki zaroorat nahi**—sabse safe way hai README ko poora replace karna.
-
-### 1. `README.md` mein ALL content delete karo
-
-Phir **sirf ye clean version** paste karo:
-
-````md
 # 📚 Book Manager — Week 5
 
 A full-stack Book Manager application built with **React, Context API, Tailwind CSS, Node.js, Express, MongoDB, and automated testing**.
