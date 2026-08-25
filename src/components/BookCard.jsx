@@ -32,7 +32,7 @@ const BookCard = ({ book, onEdit, onDelete, loading }) => {
 {book.coverImage && (
   <div className="w-full h-48 overflow-hidden">
     <img
-      src={`http://localhost:5000/${book.coverImage.replace(/\\/g, "/")}`}
+     src={`${import.meta.env.VITE_API_URL.replace("/api", "")}/${book.coverImage.replace(/\\/g, "/")}`}
       alt={book.title}
       className="w-full h-full object-cover"
     />
