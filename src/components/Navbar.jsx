@@ -40,6 +40,7 @@ const Navbar = () => {
 
               {/* Dashboard Link */}
              <Link
+             aria-label="Open Dashboard"
   to="/dashboard"
   className={`flex items-center gap-2 font-semibold py-2 px-4 rounded-lg transition-all ${
     location.pathname === '/dashboard'
@@ -66,6 +67,7 @@ const Navbar = () => {
               <button
                 onClick={logout}
                 className="flex items-center gap-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-medium py-1.5 px-3 rounded-lg transition-colors text-sm"
+                aria-label="Logout"
               >
                 <LogOut className="w-4 h-4" />
 

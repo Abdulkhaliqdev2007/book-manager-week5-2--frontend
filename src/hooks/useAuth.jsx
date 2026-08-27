@@ -1,47 +1,80 @@
 import { createContext, useContext, useState, useEffect } from 'react';
-import { signup as signupApi, login as loginApi, getMe } from '../services/authService';
+import {
+  signup as signupApi,
+  login as loginApi,
+  getMe,
+} from '../services/authService';
 
 const AuthContext = createContext(null);
 
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [user, setUser] = useState(() => {
+    const savedUser = localStorage.getItem('user');
 
-  // Check for existing token on mount
+    try {
+      return savedUser ? JSON.parse(savedUser) : null;
+    } catch {
+      localStorage.removeItem('user');
+      return null;
+    }
+  });
+
+  const [loading, setLoading] = useState(() => {
+    return !!localStorage.getItem('token');
+  });
+
   useEffect(() => {
-    const checkAuth = async () => {
-      const token = localStorage.getItem('token');
-      const savedUser = localStorage.getItem('user');
-      
-      if (token && savedUser) {
-        try {
-          // Optionally validate token with backend
-          await getMe();
-          setUser(JSON.parse(savedUser));
-        } catch (err) {
-          localStorage.removeItem('token');
-          localStorage.removeItem('user');
-        }
-      }
+    const token = localStorage.getItem('token');
+
+    if (!token) {
       setLoading(false);
+      return;
+    }
+
+    const validateAuth = async () => {
+      try {
+        await getMe();
+      } catch (err) {
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
+        setUser(null);
+      } finally {
+        setLoading(false);
+      }
     };
-    
-    checkAuth();
+
+    validateAuth();
   }, []);
 
   const signup = async (userData) => {
     const data = await signupApi(userData);
+
+    const newUser = {
+      name: data.name,
+      email: data.email,
+    };
+
     localStorage.setItem('token', data.token);
-    localStorage.setItem('user', JSON.stringify({ name: data.name, email: data.email }));
-    setUser({ name: data.name, email: data.email });
+    localStorage.setItem('user', JSON.stringify(newUser));
+
+    setUser(newUser);
+
     return data;
   };
 
   const login = async (credentials) => {
     const data = await loginApi(credentials);
+
+    const loggedInUser = {
+      name: data.name,
+      email: data.email,
+    };
+
     localStorage.setItem('token', data.token);
-    localStorage.setItem('user', JSON.stringify({ name: data.name, email: data.email }));
-    setUser({ name: data.name, email: data.email });
+    localStorage.setItem('user', JSON.stringify(loggedInUser));
+
+    setUser(loggedInUser);
+
     return data;
   };
 
@@ -53,7 +86,16 @@ export const AuthProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ user, loading, signup, login, logout, isAuthenticated: !!user }}>
+    <AuthContext.Provider
+      value={{
+        user,
+        loading,
+        signup,
+        login,
+        logout,
+        isAuthenticated: !!user,
+      }}
+    >
       {children}
     </AuthContext.Provider>
   );
@@ -61,8 +103,10 @@ export const AuthProvider = ({ children }) => {
 
 export const useAuth = () => {
   const context = useContext(AuthContext);
+
   if (!context) {
     throw new Error('useAuth must be used within an AuthProvider');
   }
+
   return context;
 };

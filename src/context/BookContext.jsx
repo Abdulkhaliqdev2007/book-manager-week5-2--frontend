@@ -68,7 +68,6 @@ const [sortOption, setSortOption] = useState("default");
     try {
       const data = await getBooksAPI();
 
-      console.log("BOOKS FROM API:", data);
 
       setBooks(Array.isArray(data) ? data : []);
     } catch (error) {
@@ -95,7 +94,7 @@ const [sortOption, setSortOption] = useState("default");
     try {
       const newBook = await createBook(bookData);
 
-      console.log("NEW BOOK:", newBook);
+     
 
       setBooks((prev) => [...prev, newBook]);
 

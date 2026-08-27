@@ -96,33 +96,17 @@ setShowForm(false);
     });
 
   };
-
-
-
-  const handleDeleteClick = (bookId) => {
-
+ const handleDeleteClick = (bookId) => {
    const book = safeBooks.find(
       (item) => item._id === bookId
     );
-
     setBookToDelete(book);
-
   };
-
-
-
   const handleConfirmDelete = async () => {
-
     if (!bookToDelete) return;
-
-
     try {
-
       await removeBook(bookToDelete._id);
-
       setBookToDelete(null);
-
-
     } catch (err) {
 
       console.error(
@@ -203,95 +187,67 @@ case "year-old":
 
   return (
     <div className="min-h-screen bg-slate-50">
-      <header className="bg-white border-b border-slate-200 sticky top-0 z-30">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <div className="bg-indigo-600 p-2 rounded-lg">
-                <Library className="w-6 h-6 text-white" />
-              </div>
+     <header className="bg-white border-b border-slate-200 sticky top-0 z-30">
+  <div className="max-w-6xl mx-auto px-4 sm:px-6 py-4">
+    <div className="flex items-center justify-between">
 
-              <div>
-
-                <h1 className="text-xl font-bold text-slate-900">
-                  Book Manager
-                </h1>
-
-                <p className="text-sm text-slate-500 hidden sm:block">
-                  Manage your personal library
-                </p>
-
-              </div>
-
-            </div>
-
-
-
-            <div className="flex items-center gap-2">
-
-
-              <button
-
-                onClick={handleRefresh}
-
-                disabled={loading.fetch}
-
-                className="flex items-center gap-2 bg-white border border-slate-300 hover:bg-slate-50 text-slate-700 font-medium py-2 px-4 rounded-lg disabled:opacity-50"
-
-              >
-
-                <RefreshCw
-
-                  className={`w-4 h-4 ${
-                    loading.fetch
-                      ? "animate-spin"
-                      : ""
-                  }`}
-
-                />
-
-                <span className="hidden sm:inline">
-                  Refresh
-                </span>
-
-
-              </button>
-
-
-
-
-              <button
-
-                onClick={() => {
-
-                  setCurrentBook(null);
-
-                  setShowForm(true);
-
-                }}
-
-                className="flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded-lg"
-
-              >
-
-                <Plus className="w-4 h-4"/>
-
-                <span className="hidden sm:inline">
-                  Add Book
-                </span>
-
-
-              </button>
-
-
-            </div>
-
-
-          </div>
-
+      <div className="flex items-center gap-3">
+        <div className="bg-indigo-600 p-2 rounded-lg">
+          <Library className="w-6 h-6 text-white" />
         </div>
 
-      </header>
+        <div>
+          <h1 className="text-xl font-bold text-slate-900">
+            Book Manager
+          </h1>
+
+          <p className="text-sm text-slate-500 hidden sm:block">
+            Manage your personal library
+          </p>
+        </div>
+      </div>
+
+      <div className="flex items-center gap-2">
+
+        {/* Refresh */}
+        <button
+          onClick={handleRefresh}
+          disabled={loading.fetch}
+          aria-label="Refresh books"
+          className="flex items-center gap-2 bg-white border border-slate-300 hover:bg-slate-50 text-slate-700 font-medium py-2 px-4 rounded-lg disabled:opacity-50"
+        >
+          <RefreshCw
+            className={`w-4 h-4 ${
+              loading.fetch ? "animate-spin" : ""
+            }`}
+          />
+
+          <span className="hidden sm:inline">
+            Refresh
+          </span>
+        </button>
+
+        {/* Add Book */}
+        <button
+          onClick={() => {
+            setCurrentBook(null);
+            setShowForm(true);
+          }}
+          aria-label="Add a new book"
+          className="flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded-lg"
+        >
+          <Plus className="w-4 h-4" />
+
+          <span className="hidden sm:inline">
+            Add Book
+          </span>
+        </button>
+
+      </div>
+
+    </div>
+  </div>
+</header>
 
 
 
@@ -424,15 +380,16 @@ case "year-old":
 
 
 
-            <select
+           <label htmlFor="sort-books" className="sr-only">
+  Sort books
+</label>
 
-              value={sortOption}
-
-              onChange={(e)=>setSortOption(e.target.value)}
-
-              className="border border-slate-300 rounded-lg px-4 py-2 bg-white"
-
-            >
+<select
+  id="sort-books"
+  value={sortOption}
+  onChange={(e) => setSortOption(e.target.value)}
+  className="border border-slate-300 rounded-lg px-4 py-2 bg-white"
+>
 
               <option value="default">
                 Sort By

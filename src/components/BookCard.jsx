@@ -71,18 +71,20 @@ const BookCard = ({ book, onEdit, onDelete, loading }) => {
         {/* Action Buttons */}
         <div className="flex gap-2 pt-3 border-t border-slate-100">
           <button
-            onClick={() => onEdit(book)}
-            disabled={loading}
-            className="flex-1 flex items-center justify-center gap-1.5 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 font-medium py-2 px-3 rounded-lg transition-colors text-sm disabled:opacity-50"
-          >
+  onClick={() => onEdit(book)}
+  disabled={loading}
+  aria-label={`Edit ${book.title}`}
+  className="flex-1 flex items-center justify-center gap-1.5 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 font-medium py-2 px-3 rounded-lg transition-colors text-sm disabled:opacity-50"
+>
             <Pencil className="w-3.5 h-3.5" />
             Edit
           </button>
-          <button
-            onClick={() => onDelete(book._id)}
-            disabled={loading}
-            className="flex-1 flex items-center justify-center gap-1.5 bg-red-50 hover:bg-red-100 text-red-600 font-medium py-2 px-3 rounded-lg transition-colors text-sm disabled:opacity-50"
-          >
+        <button
+  onClick={() => onDelete(book._id)}
+  disabled={loading}
+  aria-label={`Delete ${book.title}`}
+  className="flex-1 flex items-center justify-center gap-1.5 bg-red-50 hover:bg-red-100 text-red-700 font-medium py-2 px-3 rounded-lg transition-colors text-sm disabled:opacity-50"
+>
            <Trash2 className="w-3.5 h-3.5" />
 
 {loading ? "Deleting..." : "Delete"}
