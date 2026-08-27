@@ -368,7 +368,7 @@ The application was tested using Lighthouse with mobile emulation and throttled 
 ### Current Lighthouse Score
 
 ```text
-Performance:     98
+Performance:     99
 Accessibility:  100
 Best Practices: 100
 SEO:             100
